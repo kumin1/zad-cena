@@ -1,0 +1,79 @@
+input[type="radio"] {
+    margin-top: -1px;
+    vertical-align: middle;
+}
+.container{
+    background-color: rgba(202,208,223,0.77);
+    border-radius: 10px;
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+.upper-container {
+    display: flex;
+}
+
+.bottPage{
+    margin-left: 50px;
+    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+}
+.bottPageTopContainer{
+    display: flex;
+}
+
+.rodzajePaczki{
+    padding-right: 150px;
+    border: 1px solid gray;
+}
+.rodzajePaczki p{
+    margin-top: -2px;
+}
+.rodzajePaczki label {
+    margin-bottom: 10px; /* Adjust the value as needed */
+}
+.rodzajPaczkiContainer{
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.rodzajPaczkiContainer button{
+    width: 100%;
+    margin-top: 25px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+.bottPage img{
+    width: 100px;
+    height: 50px;
+    margin-bottom: 15px;
+}
+.bottPage p{
+    margin-left: 25px;
+    margin-top: 1px;
+
+}
+.daneAdresowe{
+    padding-right: 50px;
+    border: 1px solid gray;
+    margin-right: 50px;
+    margin-top: 50px;
+
+}
+.daneAdresowe p{
+    margin-top: -2px;
+}
+.daneAdresowe input, label{
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 100%;
+}
+.bottPage button{
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+

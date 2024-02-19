@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body">
+<div class="container">
+    <div class="upper-container">
+        <div class="rodzajPaczkiContainer">
+            <div class="rodzajePaczki">
+                <p>Rodzaj Paczki</p>
+                <label><input type="radio" name="rodzajPrzesylki" value="1.5">Pocztówka</label><br><br>
+                <label><input type="radio" name="rodzajPrzesylki" value="2.5">List</label><br><br>
+                <label><input type="radio" name="rodzajPrzesylki" value="0.5">Paczka</label><br><br>
+            </div>
+            <button id="sprawdzCeneButton">Sprawdź Cenę</button>
+        </div>
+        <div class="daneAdresowe">
+            <p>Dane adresowe</p>
+            <label>Ulica z numerem<br><input type="text" id="ulica"></label><br><br>
+            <label>Kod Pocztowy<br><input type="text" id="kodPocztowy"></label><br><br>
+            <label>Miasto<br><input type="text" id="miasto"></label><br><br>
+        </div>
+    </div>
+    <div class="bottPage">
+        <div class="bottPageTopContainer">
+            <img src="img.png" alt="creditcard">
+            <p>Cena: <span id="cena">0.00</span> zł</p>
+        </div>
+        <button id="zatwierdzButton">Zatwierdź</button>
+    </div>
+</div>
+
+    <script>
+        const sprawdzCeneButton = document.getElementById('sprawdzCeneButton');
+        const cenaSpan = document.getElementById('cena');
+        const radioButtons = document.querySelectorAll('input[name="rodzajPrzesylki"]');
+
+        sprawdzCeneButton.addEventListener('click', () => {
+            let cena = 0;
+            radioButtons.forEach(radioButton => {
+                if (radioButton.checked) {
+                    cena = parseFloat(radioButton.value);
+                }
+            });
+            cenaSpan.textContent = cena.toFixed(2);
+        });
+
+        document.getElementById('zatwierdzButton').addEventListener('click', function() {
+            const ulica = document.getElementById('ulica').value;
+            const kodPocztowy = document.getElementById('kodPocztowy').value;
+            const miasto = document.getElementById('miasto').value;
+            const cena = document.getElementById('cena').textContent;
+
+            // Send data to PHP script
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'insert.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+                    // Handle response if needed
+                }
+            };
+            xhr.send('ulica=' + ulica + '&kodPocztowy=' + kodPocztowy + '&miasto=' + miasto + '&cena=' + cena);
+        });
+    </script>
+</body>
+
+</html>
